@@ -2,14 +2,23 @@ services:
   - type: web
     name: n8n
     env: docker
+    repo: https://github.com/khamess16/n8n-on-render
+    branch: main
     plan: free
-    dockerfilePath: ./Dockerfile
+    buildCommand: |
+      echo "FROM n8nio/n8n" > Dockerfile
+      docker build -t n8n .
+    startCommand: n8n start
     envVars:
       - key: N8N_BASIC_AUTH_ACTIVE
         value: "true"
       - key: N8N_BASIC_AUTH_USER
-        value: admin
+        value: "admin"
       - key: N8N_BASIC_AUTH_PASSWORD
-        value: yourpassword
-      - key: WEBHOOK_TUNNEL_URL
-        value: https://your-subdomain.onrender.com
+        value: "3116"
+      - key: N8N_PORT
+        value: "5678"
+      - key: N8N_HOST
+        value: "0.0.0.0"
+      - key: WEBHOOK_URL
+        value: "https://n8n-on-render.onrender.com/"
