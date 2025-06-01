@@ -1,0 +1,11 @@
+{
+  "name": "n8n-on-render",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "run-script-os",
+    "start:default": "cd packages/cli/bin && ./n8n"
+  },
+  "engines": {
+    "node": "18.18.0"
+  }
+}
